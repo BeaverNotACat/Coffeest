@@ -21,5 +21,5 @@ class Recipie(Struct):
     pours: Annotated[list[WaterPouring], Meta(min_length=1)]
 
     @property
-    def total_time(self):
+    def total_time(self) -> int:
         return sum(i.time for i in self.pours)

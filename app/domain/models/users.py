@@ -1,9 +1,8 @@
 from typing import TYPE_CHECKING, Annotated
 
-from app.domain.value_objects import UserID
-
 from msgspec import Meta, Struct
 
+from app.domain.value_objects import UserID
 
 if TYPE_CHECKING:
     from .brewing_tools import BrewingTool

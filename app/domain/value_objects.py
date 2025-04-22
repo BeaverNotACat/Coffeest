@@ -4,10 +4,9 @@ from uuid import UUID
 
 from msgspec import Meta, Struct
 
-
 UserID = NewType('UserID', UUID)
 ScoreID = NewType('ScoreID', UUID)
-RecipieRecipieD = NewType('RecipieRecipieD', UUID)
+RecipieID = NewType('RecipieID', UUID)
 BrewingToolID = NewType('BrewingToolID', UUID)
 
 
