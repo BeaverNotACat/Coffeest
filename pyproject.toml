@@ -1,0 +1,78 @@
+[project]
+name = "template"
+version = "0.1.0"
+description = "Template for fullstack python web"
+readme = "README.md"
+requires-python = ">=3.13.2"
+dependencies = [
+    "argon2-cffi>=23.1.0",
+    "dishka>=1.5.3",
+    "litestar[annotated-types,cli,jwt,minijinja,prometheus,redis,sqlalchemy]>=2.15.2",
+    "pytest>=8.3.5",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.15.0",
+    "ruff>=0.11.6",
+]
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+preview = true
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "N", # pep8-naming
+    "F", # pyflakes
+    "I", # isort
+    "B", # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "COM", # flake8-commas
+    "Q", # flake8-quotes
+    "UP", # pyupgrade
+    "PT", # flake8-pytest-style
+    "RUF", # ruff specific
+    "FAST", # FastAPI
+    "ASYNC", # flake8-async
+    "TRY", # tryceratops
+    "TC", # flake8-type-checking
+    "PTH", # flake8-use-pathlib
+    "ERA", # eradicate
+    "FLY", # flynt
+    "PERF", # perflint
+    "FURB", # refurb
+    "C4", # flake8-comprehensions
+    "A", # flake8-builtins
+    "FBT", # flake8-boolean-trap
+    "YTT", # flake8-2020
+    "TID", # flake8-tidy-imports
+    "RSE", # flake8-raise
+    "RET", # flake8-return
+]
+ignore = [
+    "COM812", # ruff formatter warn on it
+]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "single"
+multiline-quotes = "double"
+
+[tool.ruff.format]
+quote-style = 'single'
+indent-style = 'space'
+
+[tool.mypy]
+strict = true
+strict_bytes = true
+local_partial_types = true
+warn_unreachable = true
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests/*"
+]
+
