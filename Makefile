@@ -1,13 +1,13 @@
 format:
-	uv run ruff format app/
-	uv run ruff check app/ --fix
+	uv run ruff format
+	uv run ruff check --fix
 
 lint:
 	uv run ruff check app/ --fix
 	uv run mypy app/
 
 test:
-	echo("WIP")
+	uv run pytest
 
 migrate:
 	echo("WIP")

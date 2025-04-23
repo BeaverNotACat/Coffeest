@@ -9,5 +9,8 @@ from app.domain.value_objects import (
 class BrewingTool(Struct):
     id: BrewingToolID
     name: str
-    type: BrewingMethod
+    method: BrewingMethod | None
     is_global: bool
+
+    def make_globally_awaliable(self) -> None:
+        self.is_global = True

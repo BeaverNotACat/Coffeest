@@ -71,8 +71,3 @@ strict_bytes = true
 local_partial_types = true
 warn_unreachable = true
 
-[tool.pytest.ini_options]
-testpaths = [
-    "tests/*"
-]
-

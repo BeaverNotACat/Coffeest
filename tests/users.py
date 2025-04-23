@@ -1,3 +1,0 @@
-
-def test_user_without_password():
-    ...

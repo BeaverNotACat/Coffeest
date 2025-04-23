@@ -17,7 +17,7 @@ class Recipie(Struct):
     user: UserID
     coffee: Coffee
     water_temperature: int
-    brewing_tool: BrewingTool
+    brewing_tools: Annotated[list[BrewingTool], Meta(min_length=1)]
     pours: Annotated[list[WaterPouring], Meta(min_length=1)]
 
     @property
