@@ -1,6 +1,6 @@
 from uuid import uuid4
 
-from app.domain.exceptions.scoresheers import SetScoreToForegnRecipieError
+from app.domain.exceptions.scoresheets import SetScoreToForegnRecipieError
 from app.domain.models.recipies import Recipie
 from app.domain.models.scoresheets import Scoresheet
 from app.domain.models.users import User
