@@ -1,7 +1,7 @@
 [project]
-name = "template"
+name = "Coffeest"
 version = "0.1.0"
-description = "Template for fullstack python web"
+description = "Fullstack web app for coffee brewers"
 readme = "README.md"
 requires-python = ">=3.13.2"
 dependencies = [
