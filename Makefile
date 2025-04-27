@@ -3,8 +3,8 @@ format:
 	uv run ruff check --fix
 
 lint:
-	uv run ruff check app/ --fix
-	uv run mypy app/
+	uv run ruff check --fix
+	uv run mypy .
 
 test:
 	uv run pytest

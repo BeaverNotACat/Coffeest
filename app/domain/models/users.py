@@ -20,3 +20,9 @@ class User(Struct):
         if tool in self.tools:
             return
         self.tools.append(tool)
+
+    def remove_tool(self, tool: 'BrewingTool') -> None:
+        if tool not in self.tools:
+            return
+        tool_index = self.tools.index(tool)
+        del self.tools[tool_index]

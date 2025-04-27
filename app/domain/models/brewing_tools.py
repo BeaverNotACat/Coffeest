@@ -12,5 +12,5 @@ class BrewingTool(Struct):
     method: BrewingMethod | None
     is_global: bool
 
-    def make_globally_awaliable(self) -> None:
+    def make_global(self) -> None:
         self.is_global = True

@@ -26,7 +26,7 @@ def new_password() -> str:
 
 
 @pytest.fixture
-def mock_user(password_hasher, password) -> User:
+def mock_user(password_hasher: PasswordHasher, password: str) -> User:
     return User(
         id=UserID(uuid4()),
         email='some@example.com',
@@ -45,7 +45,9 @@ def mock_tool() -> BrewingTool:
     )
 
 
-def test_create_user_with_password(password_hasher, password):
+def test_create_user_with_password(
+    password_hasher: PasswordHasher, password: str
+) -> None:
     email = 'some@example.com'
     service = UserService(password_hasher)
 
@@ -56,7 +58,7 @@ def test_create_user_with_password(password_hasher, password):
     assert user.tools == []
 
 
-def test_create_user_without_password(password_hasher):
+def test_create_user_without_password(password_hasher: PasswordHasher) -> None:
     email = 'some@example.com'
     service = UserService(password_hasher)
 
@@ -67,7 +69,9 @@ def test_create_user_without_password(password_hasher):
     assert user.tools == []
 
 
-def test_password_reset(password_hasher, mock_user, new_password):
+def test_password_reset(
+    password_hasher: PasswordHasher, mock_user: User, new_password: str
+) -> None:
     service = UserService(password_hasher)
     old_password = mock_user.password_hash
 
@@ -76,23 +80,32 @@ def test_password_reset(password_hasher, mock_user, new_password):
     assert mock_user.password_hash != old_password
 
 
-def test_password_reset_cant_be_same(password_hasher, mock_user, password):
+def test_password_reset_cant_be_same(
+    password_hasher: PasswordHasher, mock_user: User, password: str
+) -> None:
     service = UserService(password_hasher)
 
     with pytest.raises(PasswordAlreadyInUseError):
         service.reset_password(mock_user, password)
 
 
-def test_user_add_tool(mock_user, mock_tool):
+def test_user_add_tool(mock_user: User, mock_tool: BrewingTool) -> None:
     mock_user.add_tool(mock_tool)
 
     assert mock_user.tools.pop() == mock_tool
 
 
-def test_user_cant_add_same_tools(mock_user, mock_tool):
-    tools_count = len(mock_user.tools) + 1
+def test_user_remove_tool(mock_user: User, mock_tool: BrewingTool) -> None:
+    mock_user.add_tool(mock_tool)
+    mock_user.remove_tool(mock_tool)
 
+    assert mock_tool not in mock_user.tools
+
+
+def test_user_cant_add_same_tools(
+    mock_user: User, mock_tool: BrewingTool
+) -> None:
     mock_user.add_tool(mock_tool)
     mock_user.add_tool(mock_tool)
 
-    assert len(mock_user.tools) == tools_count
+    assert mock_user.tools.count(mock_tool) == 1
