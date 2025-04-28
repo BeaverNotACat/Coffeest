@@ -34,5 +34,5 @@ class ScoresheetColumn(Struct, frozen=True):
 
 class Coffee(Struct, frozen=True):
     name: str
-    processing_method: ProcessingMethod | None
-    region: str | None
+    processing_method: ProcessingMethod | None = None
+    region: str | None = None

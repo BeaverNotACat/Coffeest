@@ -4,13 +4,13 @@ from uuid import uuid4
 from annotated_types import MinLen
 
 from app.domain.models.brewing_tools import BrewingTool
-from app.domain.models.recipies import Recipie
+from app.domain.models.recipes import Recipie
 from app.domain.models.users import User
 from app.domain.value_objects import Coffee, RecipieID, WaterPouring
 
 
-class RecipieService:
-    def create_recipie_service(
+class RecipeService:
+    def create_recipe(
         self,
         user: User,
         coffee: Coffee,
