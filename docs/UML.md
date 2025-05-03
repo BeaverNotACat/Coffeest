@@ -1,3 +1,6 @@
+---
+mermaid: true
+---
 ## Classes
 ```mermaid
 classDiagram
