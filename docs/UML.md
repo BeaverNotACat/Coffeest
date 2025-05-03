@@ -4,7 +4,7 @@ mermaid: true
 ## Classes
 ```mermaid
 classDiagram
-
+direction RL
 namespace Models {
 	class User {
 		+str email
