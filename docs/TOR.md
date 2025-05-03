@@ -1,12 +1,17 @@
-# General
-
 ## Target
 Create an application for managing and sharing coffee-brewing recipes
 
 ## Audience
 Coffee enthusiasts in need of storing and researching share their own and others’ recipes
 
-# Pages design
+## Plan
+Development will be divided into three steps:
+1. Adding basic notebook functional
+2. Adding social features. Like favorites or reputation
+3. Adding hardware integration with scales, grinders etc.
+TOR and other documents covers one step per creation to avoid waterfalling.
+
+# Basic pages design
 
 ## Landing page
 **When visible:** Default view for unregistered or logged-out visitors
