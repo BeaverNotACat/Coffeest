@@ -22,6 +22,7 @@ namespace Models {
 
 	class Recipe {
 		+User author
+		+str title
 		+list[BrewingTool] tools
 		+Cofee cofee
 		+decimal dose
