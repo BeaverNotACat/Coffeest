@@ -9,6 +9,7 @@ wheels/
 # Tooling
 .ruff_cache
 .mypy_cache
+.coverage
 
 # Virtual environments
 .venv

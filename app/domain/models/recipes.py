@@ -12,14 +12,20 @@ from app.domain.value_objects import (
 from .brewing_tools import BrewingTool
 
 
-class Recipie(Struct):
+class Recipe(Struct):
     id: RecipieID
-    user: UserID
+    author: UserID
+    tools: Annotated[list[BrewingTool], Meta(min_length=1)]
     coffee: Coffee
+    dose: float
+    grind: float
     water_temperature: int
-    brewing_tools: Annotated[list[BrewingTool], Meta(min_length=1)]
     pours: Annotated[list[WaterPouring], Meta(min_length=1)]
 
     @property
     def total_time(self) -> int:
         return sum(i.time for i in self.pours)
+
+    @property
+    def total_water(self) -> int:
+        return sum(i.weight for i in self.pours)

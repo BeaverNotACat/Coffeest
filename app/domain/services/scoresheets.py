@@ -1,7 +1,7 @@
 from uuid import uuid4
 
 from app.domain.exceptions.scoresheets import SetScoreToForegnRecipieError
-from app.domain.models.recipes import Recipie
+from app.domain.models.recipes import Recipe
 from app.domain.models.scoresheets import Scoresheet
 from app.domain.models.users import User
 from app.domain.value_objects import ScoreID, ScoresheetColumn
@@ -11,7 +11,7 @@ class ScoresheetService:
     def create_scoresheet(
         self,
         user: User,
-        recipie: Recipie,
+        recipe: Recipe,
         aroma: ScoresheetColumn,
         flavor: ScoresheetColumn,
         aftertaste: ScoresheetColumn,
@@ -19,13 +19,13 @@ class ScoresheetService:
         sweetness: ScoresheetColumn,
         mouthfeel: ScoresheetColumn,
     ) -> Scoresheet:
-        if user.id != recipie.user:
+        if user.id != recipe.author:
             raise SetScoreToForegnRecipieError
 
         return Scoresheet(
             id=ScoreID(uuid4()),
-            user=user.id,
-            recipie=recipie.id,
+            author=user.id,
+            recipie=recipe.id,
             aroma=aroma,
             flavor=flavor,
             aftertaste=aftertaste,

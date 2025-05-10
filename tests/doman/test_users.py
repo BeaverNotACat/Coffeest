@@ -26,10 +26,8 @@ def test_create_user_without_password(
     assert user.tools == []
 
 
-def test_password_reset(
-    user_service: UserService, mock_user: User
-) -> None:
-    new_password = "new_password"
+def test_password_reset(user_service: UserService, mock_user: User) -> None:
+    new_password = 'new_password'
     old_hash = mock_user.password_hash
 
     user_service.reset_password(mock_user, new_password)
@@ -65,6 +63,18 @@ def test_user_cant_add_same_tools(
     mock_user: User, mock_brewing_tool: BrewingTool
 ) -> None:
     mock_user.add_tool(mock_brewing_tool)
+    tools_count = len(mock_user.tools)
+    
     mock_user.add_tool(mock_brewing_tool)
 
-    assert mock_user.tools.count(mock_brewing_tool) == 1
+    assert mock_user.tools.count(mock_brewing_tool) == tools_count
+
+def test_user_cant_remove_unexisting_tools(
+    mock_user: User, mock_brewing_tool: BrewingTool
+) -> None:
+    mock_user.remove_tool(mock_brewing_tool)
+    tools_count = len(mock_user.tools)
+
+    mock_user.remove_tool(mock_brewing_tool)
+
+    assert mock_user.tools.count(mock_brewing_tool) == tools_count

@@ -9,6 +9,10 @@ lint:
 test:
 	uv run pytest
 
+coverage:
+	uv run coverage run -m pytest
+	uv run coverage report -m
+
 migrate:
 	echo("WIP")
 

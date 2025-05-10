@@ -10,9 +10,8 @@ from app.domain.value_objects import (
 
 class Scoresheet(Struct):
     id: ScoreID
-    user: UserID
     recipie: RecipieID
-
+    author: UserID
     aroma: ScoresheetColumn
     flavor: ScoresheetColumn
     aftertaste: ScoresheetColumn

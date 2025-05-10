@@ -1,15 +1,15 @@
 from msgspec import Struct
 
 from app.domain.value_objects import (
-    BrewingMethod,
     BrewingToolID,
+    ToolType,
 )
 
 
 class BrewingTool(Struct):
     id: BrewingToolID
     name: str
-    method: BrewingMethod | None
+    type: ToolType
     is_global: bool
 
     def make_global(self) -> None:

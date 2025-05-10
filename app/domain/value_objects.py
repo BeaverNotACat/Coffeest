@@ -10,7 +10,7 @@ RecipieID = NewType('RecipieID', UUID)
 BrewingToolID = NewType('BrewingToolID', UUID)
 
 
-class BrewingMethod(StrEnum):
+class ToolType(StrEnum):
     espresso = 'espresso'
     pour_over = 'pour_over'
     immersion = 'pour_over'
@@ -18,8 +18,9 @@ class BrewingMethod(StrEnum):
 
 class ProcessingMethod(StrEnum):
     natural = 'natural'
-    wet = 'wet'
     honey = 'honey'
+    wet = 'wet'
+    wet_hulled = 'wet_hulled'
 
 
 class WaterPouring(Struct, frozen=True):
@@ -29,7 +30,7 @@ class WaterPouring(Struct, frozen=True):
 
 class ScoresheetColumn(Struct, frozen=True):
     impression: Annotated[int, Meta(ge=0, le=3)]
-    score: Annotated[int, Meta(ge=0, le=0)]
+    score: Annotated[int, Meta(ge=0, le=9)]
 
 
 class Coffee(Struct, frozen=True):

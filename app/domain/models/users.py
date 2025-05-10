@@ -4,7 +4,7 @@ from msgspec import Meta, Struct
 
 from app.domain.value_objects import UserID
 
-if TYPE_CHECKING:
+if TYPE_CHECKING: # pragma: no cover
     from .brewing_tools import BrewingTool
 
 

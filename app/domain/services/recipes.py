@@ -4,7 +4,7 @@ from uuid import uuid4
 from annotated_types import MinLen
 
 from app.domain.models.brewing_tools import BrewingTool
-from app.domain.models.recipes import Recipie
+from app.domain.models.recipes import Recipe
 from app.domain.models.users import User
 from app.domain.value_objects import Coffee, RecipieID, WaterPouring
 
@@ -14,15 +14,19 @@ class RecipeService:
         self,
         user: User,
         coffee: Coffee,
+        dose: float,
+        grind: float,
         water_temperature: int,
-        brewing_tools: Annotated[list[BrewingTool], MinLen(1)],
+        tools: Annotated[list[BrewingTool], MinLen(1)],
         pours: Annotated[list[WaterPouring], MinLen(1)],
-    ) -> Recipie:
-        return Recipie(
+    ) -> Recipe:
+        return Recipe(
             id=RecipieID(uuid4()),
-            user=user.id,
+            author=user.id,
             coffee=coffee,
+            dose=dose,
+            grind=grind,
             water_temperature=water_temperature,
-            brewing_tools=brewing_tools,
+            tools=tools,
             pours=pours,
         )
