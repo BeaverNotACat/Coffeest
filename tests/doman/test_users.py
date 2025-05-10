@@ -64,10 +64,11 @@ def test_user_cant_add_same_tools(
 ) -> None:
     mock_user.add_tool(mock_brewing_tool)
     tools_count = len(mock_user.tools)
-    
+
     mock_user.add_tool(mock_brewing_tool)
 
     assert mock_user.tools.count(mock_brewing_tool) == tools_count
+
 
 def test_user_cant_remove_unexisting_tools(
     mock_user: User, mock_brewing_tool: BrewingTool

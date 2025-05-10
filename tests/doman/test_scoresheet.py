@@ -1,6 +1,7 @@
+from uuid import uuid4
+
 import pytest
 
-from uuid import uuid4
 from app.domain.exceptions.scoresheets import SetScoreToForegnRecipieError
 from app.domain.models.recipes import Recipe
 from app.domain.models.users import User
@@ -43,11 +44,12 @@ def test_create_scoresheet(
     assert scoresheet.mouthfeel == mouthfeel
     assert scoresheet.overall == overall_score
 
+
 def test_only_recipe_author_can_add_scoresheet(
     scoresheet_service: ScoresheetService,
     mock_user: User,
     mock_recipe: Recipe,
-):
+) -> None:
     mock_user.id = UserID(uuid4())
 
     with pytest.raises(SetScoreToForegnRecipieError):
